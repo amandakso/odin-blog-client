@@ -1,7 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Home = () => {
-  return <h1>Home Page</h1>;
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/blog/posts`, {
+          mode: "cors",
+        });
+        if (!response.ok) {
+          throw new Error(
+            `This is an HTTP error: The status is ${response.status}`
+          );
+        }
+        let postData = await response.json();
+        setData(postData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getPosts();
+  }, []);
+  return (
+    <div>
+      <h1>Posts</h1>
+      {data ? (
+        <div>
+          {data.map(
+            ({
+              author,
+              title,
+              publish_date_formatted,
+              updated,
+              updated_formatted,
+              _id,
+            }) => (
+              <div key={_id}>
+                <p>{title}</p>
+                <p>{author.username}</p>
+                <p>{updated ? updated_formatted : publish_date_formatted}</p>
+              </div>
+            )
+          )}
+        </div>
+      ) : (
+        <p>No posts</p>
+      )}
+    </div>
+  );
 };
 
 export default Home;
