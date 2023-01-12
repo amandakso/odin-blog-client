@@ -31,23 +31,25 @@ const Home = () => {
     <div>
       <h1>Posts</h1>
       {data ? (
-        <div>
-          {data.map(
-            ({
-              author,
-              title,
-              publish_date_formatted,
-              updated,
-              updated_formatted,
-              _id,
-            }) => (
-              <div key={_id}>
-                <p>{title}</p>
-                <p>{author.username}</p>
-                <p>{updated ? updated_formatted : publish_date_formatted}</p>
-              </div>
-            )
-          )}
+        <div className="tile is-ancestor">
+          <div className="tile is-3 is-parent">
+            {data.map(
+              ({
+                author,
+                title,
+                publish_date_formatted,
+                updated,
+                updated_formatted,
+                _id,
+              }) => (
+                <div className="tile is-child box" key={_id}>
+                  <p>{title}</p>
+                  <p>By: {author.username}</p>
+                  <p>{updated ? updated_formatted : publish_date_formatted}</p>
+                </div>
+              )
+            )}
+          </div>
         </div>
       ) : (
         <p>No posts</p>
