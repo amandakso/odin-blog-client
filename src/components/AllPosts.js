@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const AllPosts = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const navigate = useNavigate();
-
-  const allPostsPage = () => {
-    navigate("/posts");
-  };
-
   useEffect(() => {
     const getPosts = async () => {
       try {
@@ -36,10 +28,10 @@ const Home = () => {
     getPosts();
   }, []);
   return (
-    <div>
-      <h1>Posts</h1>
+    <div className="content">
+      <h1>All Posts</h1>
       {data ? (
-        <div className="tile is-ancestor">
+        <ul>
           {data.map(
             ({
               author,
@@ -49,23 +41,17 @@ const Home = () => {
               updated_formatted,
               _id,
             }) => (
-              <div className="tile is-parent is-3">
-                <div className="tile is-child box" key={_id}>
-                  <p className="title">{title}</p>
-                  <p className="subtitle">By: {author.username}</p>
-                  <p className="subtitle">
-                    {updated ? updated_formatted : publish_date_formatted}
-                  </p>
-                </div>
-              </div>
+              <li key={_id}>
+                <p>
+                  {title} By: {author.username}{" "}
+                  {updated
+                    ? `Updated: ${updated_formatted}`
+                    : `Published ${publish_date_formatted}`}
+                </p>
+              </li>
             )
           )}
-          <div className="tile is-parent is-3" onClick={allPostsPage}>
-            <div className="tile is-child box">
-              <p>See All Posts...</p>
-            </div>
-          </div>
-        </div>
+        </ul>
       ) : (
         <p>No posts</p>
       )}
@@ -73,4 +59,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AllPosts;
