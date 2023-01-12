@@ -12,6 +12,10 @@ const Home = () => {
     navigate("/posts");
   };
 
+  const postPage = () => {
+    navigate("/posts/:postId");
+  };
+
   useEffect(() => {
     const getPosts = async () => {
       try {

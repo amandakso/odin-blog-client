@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AllPosts = () => {
   const [data, setData] = useState(null);
@@ -42,12 +43,12 @@ const AllPosts = () => {
               _id,
             }) => (
               <li key={_id}>
-                <p>
+                <Link to={`/posts/${_id}`}>
                   {title} By: {author.username}{" "}
                   {updated
                     ? `Updated: ${updated_formatted}`
                     : `Published ${publish_date_formatted}`}
-                </p>
+                </Link>
               </li>
             )
           )}
