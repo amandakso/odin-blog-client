@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import Post from "./Post";
 
@@ -14,8 +14,8 @@ const Home = () => {
     navigate("/posts");
   };
 
-  const postPage = () => {
-    navigate("/posts/:postId");
+  const postPage = (postId) => {
+    navigate(`/posts/${postId}`);
   };
 
   useEffect(() => {
@@ -55,7 +55,11 @@ const Home = () => {
               updated_formatted,
               _id,
             }) => (
-              <div className="tile is-parent is-3" key={_id}>
+              <div
+                className="tile is-parent is-3"
+                key={_id}
+                onClick={() => postPage(_id)}
+              >
                 <div className="tile is-child box">
                   <p className="title">{title}</p>
                   <p className="subtitle">By: {author.username}</p>
