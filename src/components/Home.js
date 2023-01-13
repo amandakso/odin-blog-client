@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Post from "./Post";
+
 const Home = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -53,8 +55,8 @@ const Home = () => {
               updated_formatted,
               _id,
             }) => (
-              <div className="tile is-parent is-3">
-                <div className="tile is-child box" key={_id}>
+              <div className="tile is-parent is-3" key={_id}>
+                <div className="tile is-child box">
                   <p className="title">{title}</p>
                   <p className="subtitle">By: {author.username}</p>
                   <p className="subtitle">
