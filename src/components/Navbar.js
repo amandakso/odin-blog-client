@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const toggleBurgerMenu = () => {
@@ -25,10 +26,14 @@ const Navbar = () => {
       </div>
       <div id="navbarMenuItems" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item">Home</a>
+          <Link to={"/"} className="navbar-item">
+            Home
+          </Link>
         </div>
         <div className="navbar-end">
-          <a className="navbar-item">Posts</a>
+          <Link to={"/posts"} className="navbar-item">
+            Posts
+          </Link>
           <div className="buttons navbar-item">
             <a className="button">
               <strong>Sign up</strong>

@@ -11,8 +11,8 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<AllPosts />} />
