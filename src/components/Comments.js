@@ -20,7 +20,6 @@ const Comments = () => {
           );
         }
         let commentData = await response.json();
-        console.log(commentData);
         setData(commentData);
         setError(null);
       } catch (err) {
