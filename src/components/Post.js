@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import Comments from "./Comments";
+
 const Post = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,15 +38,21 @@ const Post = () => {
   }, [postId]);
   return (
     <div className="content">
-      <h1>{data.title}</h1>
-      <h2>By: {data.author.username}</h2>
-      {data.updated ? (
-        <h3>Updated: {data.updated_formatted}</h3>
+      {data ? (
+        <div>
+          <h1>{data.title}</h1>
+          <h2>By: {data.author.username}</h2>
+          {data.updated ? (
+            <h3>Updated: {data.updated_formatted}</h3>
+          ) : (
+            <h3>Published: {data.publish_date_formatted}</h3>
+          )}
+          <p>{data.content}</p>
+        </div>
       ) : (
-        <h3>Published: {data.publish_date_formatted}</h3>
+        <p>Post Not Found</p>
       )}
-
-      <p>{data.content}</p>
+      <Comments postId={postId} />
     </div>
   );
 };
