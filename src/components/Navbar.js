@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const toggleBurgerMenu = () => {
+    document.querySelector(".navbar-menu").classList.toggle("is-active");
+    document.querySelector(".navbar-burger").classList.toggle("is-active");
+  };
+
   return (
     <div className="navbar" role="navigation" aria-label="dropdown navigation">
       <div className="navbar-brand">
@@ -11,6 +16,7 @@ const Navbar = () => {
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarMenuItems"
+          onClick={toggleBurgerMenu}
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -23,7 +29,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <a className="navbar-item">Posts</a>
-          <div className="buttons">
+          <div className="buttons navbar-item">
             <a className="button">
               <strong>Sign up</strong>
             </a>
