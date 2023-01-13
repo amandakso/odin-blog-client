@@ -24,7 +24,6 @@ const Post = () => {
           );
         }
         let postData = await response.json();
-        console.log(postData);
         setData(postData);
         setError(null);
       } catch (err) {
