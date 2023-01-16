@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import LoginModal from "./LoginModal";
+
 const Navbar = () => {
   const toggleBurgerMenu = () => {
     document.querySelector(".navbar-menu").classList.toggle("is-active");
@@ -38,7 +40,7 @@ const Navbar = () => {
             <a className="button">
               <strong>Sign up</strong>
             </a>
-            <a className="button">Log in</a>
+            <LoginModal />
           </div>
         </div>
       </div>
