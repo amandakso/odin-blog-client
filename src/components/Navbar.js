@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import LoginModal from "./LoginModal";
+import SignupModal from "./SignupModal";
 
 const Navbar = () => {
   const toggleBurgerMenu = () => {
@@ -37,9 +38,7 @@ const Navbar = () => {
             Posts
           </Link>
           <div className="buttons navbar-item">
-            <a className="button">
-              <strong>Sign up</strong>
-            </a>
+            <SignupModal />
             <LoginModal />
           </div>
         </div>
