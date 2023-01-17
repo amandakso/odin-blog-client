@@ -5,9 +5,14 @@ import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
 
 const Navbar = () => {
+  const [user, setUser] = useState(null);
   const toggleBurgerMenu = () => {
     document.querySelector(".navbar-menu").classList.toggle("is-active");
     document.querySelector(".navbar-burger").classList.toggle("is-active");
+  };
+
+  const updateUser = (currentUser) => {
+    setUser(currentUser);
   };
 
   return (
@@ -32,16 +37,29 @@ const Navbar = () => {
           <Link to={"/"} className="navbar-item">
             Home
           </Link>
-        </div>
-        <div className="navbar-end">
           <Link to={"/posts"} className="navbar-item">
             Posts
           </Link>
-          <div className="buttons navbar-item">
-            <SignupModal />
-            <LoginModal />
-          </div>
         </div>
+        {user ? (
+          <div className="navbar-end">
+            <div className="navbar-item has-dropdown is-hoverable">
+              <div className="navbar-item">{user}</div>
+              <div className="navbar-dropdown is-right">
+                <div className="navbar-item">
+                  <button className="button">Logout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="navbar-end">
+            <div className="buttons navbar-item">
+              <SignupModal />
+              <LoginModal updateUser={updateUser} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

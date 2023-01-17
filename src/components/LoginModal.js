@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-const LoginModal = () => {
+const LoginModal = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
+
   const toggleModal = () => {
     if (isActive) {
       setIsActive(false);
@@ -14,10 +15,12 @@ const LoginModal = () => {
     }
   };
 
+  const updateUser = (currentUser) => {
+    props.updateUser(currentUser);
+  };
+
   const clickLogin = async (e) => {
     e.preventDefault();
-    console.log("Username: " + username);
-    console.log("Password: " + password);
     try {
       let res = await fetch("http://localhost:3000/blog/login", {
         method: "POST",
@@ -34,6 +37,7 @@ const LoginModal = () => {
       console.log("Error " + resJson.error);
       console.log("Message" + resJson.message);
       console.log("token: " + resJson.token);
+      console.log("username: " + resJson.username);
 
       if (res.status === 200) {
         if (resJson.error) {
@@ -47,6 +51,7 @@ const LoginModal = () => {
           setUsername("");
           setPassword("");
           sessionStorage.setItem("token", resJson.token);
+          updateUser(resJson.username);
         }
       } else {
         console.log("error occurred");
