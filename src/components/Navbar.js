@@ -15,6 +15,12 @@ const Navbar = () => {
     setUser(currentUser);
   };
 
+  const logoutUser = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.clear();
+    updateUser(null);
+  };
+
   return (
     <div className="navbar" role="navigation" aria-label="dropdown navigation">
       <div className="navbar-brand">
@@ -47,7 +53,9 @@ const Navbar = () => {
               <div className="navbar-item">{user}</div>
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item">
-                  <button className="button">Logout</button>
+                  <button className="button" onClick={() => logoutUser()}>
+                    Logout
+                  </button>
                 </div>
               </div>
             </div>
