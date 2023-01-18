@@ -34,10 +34,6 @@ const LoginModal = (props) => {
         }),
       });
       let resJson = await res.json();
-      console.log("Error " + resJson.error);
-      console.log("Message" + resJson.message);
-      console.log("token: " + resJson.token);
-      console.log("username: " + resJson.username);
 
       if (res.status === 200) {
         if (resJson.error) {
@@ -51,7 +47,6 @@ const LoginModal = (props) => {
           setUsername("");
           setPassword("");
           sessionStorage.setItem("token", resJson.token);
-          console.log(sessionStorage.getItem("token"));
           updateUser(resJson.username);
           alert(`Welcome ${resJson.username}!`);
         }

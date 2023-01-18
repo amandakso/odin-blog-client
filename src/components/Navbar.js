@@ -17,7 +17,6 @@ const Navbar = () => {
 
   const logoutUser = async () => {
     let token = sessionStorage.getItem("token");
-    console.log(token);
     try {
       let res = await fetch("http://localhost:3000/blog/logout", {
         method: "PUT",
@@ -28,7 +27,6 @@ const Navbar = () => {
         },
       });
       let resJson = await res.json();
-      console.log("Message" + resJson.msg);
       sessionStorage.removeItem("token");
       sessionStorage.clear();
       updateUser(null);
