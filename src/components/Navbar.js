@@ -17,13 +17,14 @@ const Navbar = () => {
 
   const logoutUser = async () => {
     let token = sessionStorage.getItem("token");
+    console.log(token);
     try {
       let res = await fetch("http://localhost:3000/blog/logout", {
-        method: "POST",
+        method: "PUT",
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `bearer ${token}`,
         },
       });
       let resJson = await res.json();

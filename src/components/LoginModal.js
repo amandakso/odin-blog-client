@@ -51,7 +51,9 @@ const LoginModal = (props) => {
           setUsername("");
           setPassword("");
           sessionStorage.setItem("token", resJson.token);
+          console.log(sessionStorage.getItem("token"));
           updateUser(resJson.username);
+          alert(`Welcome ${resJson.username}!`);
         }
       } else {
         console.log("error occurred");
