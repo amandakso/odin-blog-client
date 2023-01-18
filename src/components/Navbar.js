@@ -15,10 +15,26 @@ const Navbar = () => {
     setUser(currentUser);
   };
 
-  const logoutUser = () => {
-    sessionStorage.removeItem("token");
-    sessionStorage.clear();
-    updateUser(null);
+  const logoutUser = async () => {
+    let token = sessionStorage.getItem("token");
+    try {
+      let res = await fetch("http://localhost:3000/blog/logout", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      let resJson = await res.json();
+      console.log("Message" + resJson.msg);
+      sessionStorage.removeItem("token");
+      sessionStorage.clear();
+      updateUser(null);
+      alert(resJson.msg);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
