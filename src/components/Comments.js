@@ -5,6 +5,7 @@ const Comments = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [newComment, setNewComment] = useState("");
   const { postId } = useParams();
 
   useEffect(() => {
@@ -35,6 +36,34 @@ const Comments = () => {
   return (
     <div className="content">
       <h1>Comments</h1>
+      <form>
+        <div className="field">
+          <label className="label">New Comment: </label>
+          <div className="control">
+            <textarea
+              className="textarea"
+              placeholder="Add a comment here."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+            ></textarea>
+          </div>
+        </div>
+        <div className="field is-grouped">
+          <div className="control">
+            <button className="button">Submit</button>
+            <button
+              className="button"
+              onClick={(e) => {
+                e.preventDefault();
+
+                setNewComment("");
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
       {data ? (
         <div className="tile is-ancestor">
           {data.map(
