@@ -15,8 +15,12 @@ const LoginModal = (props) => {
     }
   };
 
-  const updateUser = (currentUser) => {
-    props.updateUser(currentUser);
+  const updateUsername = (currentUser) => {
+    props.updateUsername(currentUser);
+  };
+
+  const updateUser = () => {
+    props.updateUser(true);
   };
 
   const clickLogin = async (e) => {
@@ -47,7 +51,8 @@ const LoginModal = (props) => {
           setUsername("");
           setPassword("");
           sessionStorage.setItem("token", resJson.token);
-          updateUser(resJson.username);
+          updateUsername(resJson.username);
+          updateUser(true);
           alert(`Welcome ${resJson.username}!`);
         }
       } else {

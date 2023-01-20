@@ -5,15 +5,29 @@ import LoginModal from "./LoginModal";
 import SignupModal from "./SignupModal";
 
 const Navbar = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(false);
+  const [username, setUsername] = useState("");
   const toggleBurgerMenu = () => {
     document.querySelector(".navbar-menu").classList.toggle("is-active");
     document.querySelector(".navbar-burger").classList.toggle("is-active");
   };
 
-  const updateUser = (currentUser) => {
-    setUser(currentUser);
+  const updateUsername = (currentUser) => {
+    setUsername(currentUser);
   };
+
+  const updateUser = () => {
+    setUser(true);
+  };
+
+  useEffect(() => {
+    let currentUser = sessionStorage.getItem("token");
+    if (currentUser) {
+      setUser(true);
+    } else {
+      setUser(false);
+    }
+  }, []);
 
   const logoutUser = async () => {
     let token = sessionStorage.getItem("token");
@@ -29,7 +43,8 @@ const Navbar = () => {
       let resJson = await res.json();
       sessionStorage.removeItem("token");
       sessionStorage.clear();
-      updateUser(null);
+      setUser(false);
+      setUsername("");
       alert(resJson.msg);
     } catch (err) {
       console.log(err);
@@ -65,7 +80,7 @@ const Navbar = () => {
         {user ? (
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
-              <div className="navbar-item">{user}</div>
+              <div className="navbar-item">{username}</div>
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item">
                   <button className="button" onClick={() => logoutUser()}>
@@ -79,7 +94,10 @@ const Navbar = () => {
           <div className="navbar-end">
             <div className="buttons navbar-item">
               <SignupModal />
-              <LoginModal updateUser={updateUser} />
+              <LoginModal
+                updateUser={updateUser}
+                updateUsername={updateUsername}
+              />
             </div>
           </div>
         )}
