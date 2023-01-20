@@ -5,8 +5,55 @@ const Comments = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [errors, setErrors] = useState(null);
   const [newComment, setNewComment] = useState("");
+  const [refreshComments, setRefreshComments] = useState(true);
   const { postId } = useParams();
+
+  const createComment = async (e) => {
+    e.preventDefault();
+    try {
+      let token = sessionStorage.getItem("token");
+      if (!token) {
+        alert("Must be signed in to leave comment");
+      } else {
+        const res = await fetch(
+          `http://localhost:3000/blog/posts/${postId}/comments`,
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `bearer ${token}`,
+            },
+            body: JSON.stringify({
+              comment: newComment,
+            }),
+          }
+        );
+        let resJson = await res.json();
+
+        if (res.status === 200) {
+          if (resJson.errors) {
+            setErrors(resJson.errors);
+          }
+          if (resJson.error) {
+            setError(resJson.error);
+          }
+          if (resJson.message) {
+            alert(resJson.message);
+            setError(null);
+            setErrors(null);
+            setRefreshComments(true);
+          }
+        } else {
+          console.log("error occurred");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const getComments = async () => {
@@ -30,8 +77,11 @@ const Comments = () => {
         setLoading(false);
       }
     };
-    getComments();
-  }, [postId]);
+    if (refreshComments) {
+      getComments();
+      setRefreshComments(false);
+    }
+  }, [postId, refreshComments]);
 
   return (
     <div className="content">
@@ -50,7 +100,9 @@ const Comments = () => {
         </div>
         <div className="field is-grouped">
           <div className="control">
-            <button className="button">Submit</button>
+            <button className="button" onClick={(e) => createComment(e)}>
+              Submit
+            </button>
             <button
               className="button"
               onClick={(e) => {
@@ -64,6 +116,14 @@ const Comments = () => {
           </div>
         </div>
       </form>
+      {error ? <p>{error}</p> : null}
+      {errors ? (
+        <ul>
+          {errors.map((item, index) => (
+            <li key={index}>{item.msg}</li>
+          ))}
+        </ul>
+      ) : null}
       {data ? (
         <div className="tile is-ancestor">
           {data.map(
