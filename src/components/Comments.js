@@ -55,6 +55,46 @@ const Comments = () => {
     }
   };
 
+  const deleteComment = async (e, commentId) => {
+    e.preventDefault();
+    try {
+      let token = sessionStorage.getItem("token");
+      if (!token) {
+        alert("Must be signed in to delete comment");
+      } else {
+        const res = await fetch(
+          `http://localhost:3000/blog/posts/${postId}/comments/${commentId}`,
+          {
+            method: "DELETE",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `bearer ${token}`,
+            },
+          }
+        );
+        let resJson = await res.json();
+
+        if (res.status === 200) {
+          if (resJson.error) {
+            setError(resJson.error);
+            alert(resJson.error);
+          }
+          if (resJson.message) {
+            alert(resJson.message);
+            setError(null);
+            setErrors(null);
+            setRefreshComments(true);
+          }
+        } else {
+          console.log("error occurred");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     const getComments = async () => {
       try {
@@ -143,6 +183,12 @@ const Comments = () => {
                       ? `Updated: ${updated_formatted}`
                       : `Posted: ${timestamp_formatted}`}
                   </p>
+                  <div className="icon is-medium">
+                    <i
+                      className="mdi mdi-24px mdi-delete"
+                      onClick={(e) => deleteComment(e, _id)}
+                    ></i>
+                  </div>
                   <p>{content}</p>
                 </div>
               </div>
