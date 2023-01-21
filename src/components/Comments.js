@@ -77,13 +77,10 @@ const Comments = () => {
 
         if (res.status === 200) {
           if (resJson.error) {
-            setError(resJson.error);
             alert(resJson.error);
           }
           if (resJson.message) {
             alert(resJson.message);
-            setError(null);
-            setErrors(null);
             setRefreshComments(true);
           }
         } else {
