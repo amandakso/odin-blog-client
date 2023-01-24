@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import EditCommentModal from "./EditCommentModal";
+
 const Comments = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -186,6 +188,11 @@ const Comments = () => {
                       onClick={(e) => deleteComment(e, _id)}
                     ></i>
                   </div>
+                  <EditCommentModal
+                    content={content}
+                    postid={postId}
+                    commentid={_id}
+                  />
                   <p>{content}</p>
                 </div>
               </div>
