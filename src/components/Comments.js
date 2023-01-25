@@ -192,6 +192,7 @@ const Comments = () => {
                     content={content}
                     postid={postId}
                     commentid={_id}
+                    refresh={setRefreshComments}
                   />
                   <p>{content}</p>
                 </div>
