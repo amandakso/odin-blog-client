@@ -32,6 +32,10 @@ a {
   color: var(--secondary-color, green);
 }
 
+li {
+  list-style: none;
+}
+
 .button {
   color: var(--black-color, black);
   background-color: var(--tertiary-color, brown);
