@@ -36,7 +36,7 @@ const Post = () => {
     getPost();
   }, [postId]);
   return (
-    <div className="content">
+    <div className="post content">
       {data ? (
         <div>
           <h1>{data.title}</h1>

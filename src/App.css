@@ -18,6 +18,10 @@ body {
   color: var(--black-color, black);
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 .navbar,
 .navbar-menu {
   background-color: var(--primary-color, green);
@@ -50,6 +54,11 @@ a {
 .is-child {
   color: var(--black-color, black);
   background-color: var(--tertiary-color, brown);
+}
+
+.post {
+  margin: 0;
+  padding: 0;
 }
 
 .App-header {
