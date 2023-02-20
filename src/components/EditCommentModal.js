@@ -30,7 +30,7 @@ const EditCommentModal = (props) => {
         alert("Unable to update comment");
       } else {
         const res = await fetch(
-          `http://localhost:3000/blog/posts/${postId}/comments/${commentId}`,
+          `https://odin-blog-api.onrender.com/blog/posts/${postId}/comments/${commentId}`,
           {
             method: "PUT",
             mode: "cors",

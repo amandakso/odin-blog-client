@@ -13,7 +13,7 @@ const Post = () => {
     const getPost = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/blog/posts/${postId}`,
+          `https://odin-blog-api.onrender.com/blog/posts/${postId}`,
           {
             mode: "cors",
           }

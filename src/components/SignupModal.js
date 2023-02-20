@@ -18,7 +18,7 @@ const SignupModal = () => {
   const clickSignup = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("http://localhost:3000/blog/sign-up", {
+      let res = await fetch("https://odin-blog-api.onrender.com/blog/sign-up", {
         method: "POST",
         mode: "cors",
         headers: {

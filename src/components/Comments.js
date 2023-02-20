@@ -20,7 +20,7 @@ const Comments = () => {
         alert("Must be signed in to leave comment");
       } else {
         const res = await fetch(
-          `http://localhost:3000/blog/posts/${postId}/comments`,
+          `https://odin-blog-api.onrender.com/blog/posts/${postId}/comments`,
           {
             method: "POST",
             mode: "cors",
@@ -65,7 +65,7 @@ const Comments = () => {
         alert("Must be signed in to delete comment");
       } else {
         const res = await fetch(
-          `http://localhost:3000/blog/posts/${postId}/comments/${commentId}`,
+          `https://odin-blog-api.onrender.com/blog/posts/${postId}/comments/${commentId}`,
           {
             method: "DELETE",
             mode: "cors",
@@ -98,7 +98,7 @@ const Comments = () => {
     const getComments = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/blog/posts/${postId}/comments`,
+          `https://odin-blog-api.onrender.com/blog/posts/${postId}/comments`,
           { mode: "cors" }
         );
         if (!response.ok) {

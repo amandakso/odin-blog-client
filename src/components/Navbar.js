@@ -32,7 +32,7 @@ const Navbar = () => {
   const logoutUser = async () => {
     let token = sessionStorage.getItem("token");
     try {
-      let res = await fetch("http://localhost:3000/blog/logout", {
+      let res = await fetch("https://odin-blog-api.onrender.com/blog/logout", {
         method: "PUT",
         mode: "cors",
         headers: {

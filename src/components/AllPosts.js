@@ -8,9 +8,12 @@ const AllPosts = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/blog/posts`, {
-          mode: "cors",
-        });
+        const response = await fetch(
+          `https://odin-blog-api.onrender.com/blog/posts`,
+          {
+            mode: "cors",
+          }
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
