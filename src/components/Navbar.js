@@ -20,6 +20,43 @@ const Navbar = () => {
     setUser(true);
   };
 
+  const loginGuest = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch("https://odin-blog-api.onrender.com/blog/login", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: process.env.REACT_APP_GUEST_USER,
+          password: process.env.REACT_APP_GUEST_PWD,
+        }),
+      });
+      let resJson = await res.json();
+
+      if (res.status === 200) {
+        if (resJson.error) {
+          alert(resJson.error);
+        }
+        if (resJson.message) {
+          alert(resJson.message);
+        }
+        if (resJson.token) {
+          sessionStorage.setItem("token", resJson.token);
+          updateUsername(resJson.username);
+          updateUser(true);
+          alert(`Welcome ${resJson.username}!`);
+        }
+      } else {
+        console.log("error occurred");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     let currentUser = sessionStorage.getItem("token");
     if (currentUser) {
@@ -98,6 +135,9 @@ const Navbar = () => {
                 updateUser={updateUser}
                 updateUsername={updateUsername}
               />
+              <button className="button" onClick={(e) => loginGuest(e)}>
+                Guest
+              </button>
             </div>
           </div>
         )}
