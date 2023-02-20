@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
-
-import Post from "./Post";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState(null);

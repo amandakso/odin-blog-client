@@ -10,6 +10,48 @@
   --black-color: #22223b;
 }
 
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  background-color: var(--white-color, white);
+  color: var(--black-color, black);
+}
+
+.navbar,
+.navbar-menu {
+  background-color: var(--primary-color, green);
+  color: var(--black-color, black);
+}
+
+a {
+  color: var(--secondary-color, green);
+}
+
+.button {
+  color: var(--black-color, black);
+  background-color: var(--tertiary-color, brown);
+}
+
+.modal-card-head,
+.modal-card-foot {
+  background-color: var(--tertiary-color, brown);
+  color: var(--secondary-color, green);
+}
+
+.delete {
+  background-color: var(--secondary-color, green);
+}
+
+.modal-card-body {
+  background-color: var(--white-color, white);
+}
+
+.is-child {
+  color: var(--black-color, black);
+  background-color: var(--tertiary-color, brown);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
