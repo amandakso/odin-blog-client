@@ -54,7 +54,7 @@ const Navbar = () => {
   return (
     <div className="navbar" role="navigation" aria-label="dropdown navigation">
       <div className="navbar-brand">
-        <button className="navbar-item">BLOG</button>
+        <div className="navbar-item">BLOG</div>
         <a
           role="button"
           className="navbar-burger"
