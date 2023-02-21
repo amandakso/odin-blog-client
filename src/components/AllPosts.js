@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 const AllPosts = () => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
   useEffect(() => {
     const getPosts = async () => {
       try {
@@ -21,12 +20,9 @@ const AllPosts = () => {
         }
         let postData = await response.json();
         setData(postData);
-        setError(null);
       } catch (err) {
-        setError(err.message);
+        alert(err.message);
         setData(null);
-      } finally {
-        setLoading(false);
       }
     };
     getPosts();

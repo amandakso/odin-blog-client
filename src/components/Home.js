@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
@@ -32,12 +30,9 @@ const Home = () => {
         }
         let postData = await response.json();
         setData(postData);
-        setError(null);
       } catch (err) {
-        setError(err.message);
+        alert(err.message);
         setData(null);
-      } finally {
-        setLoading(false);
       }
     };
     getPosts();

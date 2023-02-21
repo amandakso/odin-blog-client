@@ -5,8 +5,6 @@ import Comments from "./Comments";
 
 const Post = () => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const { postId } = useParams();
 
   useEffect(() => {
@@ -25,12 +23,9 @@ const Post = () => {
         }
         let postData = await response.json();
         setData(postData);
-        setError(null);
       } catch (err) {
-        setError(err.message);
+        alert(err.message);
         setData(null);
-      } finally {
-        setLoading(false);
       }
     };
     getPost();
