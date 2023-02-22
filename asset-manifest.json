@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.71bac2b5.css",
-    "main.js": "/react-gh-pages/static/js/main.7944b76c.js",
-    "static/js/787.c8f1fcc4.chunk.js": "/react-gh-pages/static/js/787.c8f1fcc4.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.71bac2b5.css.map": "/react-gh-pages/static/css/main.71bac2b5.css.map",
-    "main.7944b76c.js.map": "/react-gh-pages/static/js/main.7944b76c.js.map",
-    "787.c8f1fcc4.chunk.js.map": "/react-gh-pages/static/js/787.c8f1fcc4.chunk.js.map"
+    "main.css": "/odin-blog-client/static/css/main.71bac2b5.css",
+    "main.js": "/odin-blog-client/static/js/main.c9ff2a45.js",
+    "static/js/787.c8f1fcc4.chunk.js": "/odin-blog-client/static/js/787.c8f1fcc4.chunk.js",
+    "index.html": "/odin-blog-client/index.html",
+    "main.71bac2b5.css.map": "/odin-blog-client/static/css/main.71bac2b5.css.map",
+    "main.c9ff2a45.js.map": "/odin-blog-client/static/js/main.c9ff2a45.js.map",
+    "787.c8f1fcc4.chunk.js.map": "/odin-blog-client/static/js/787.c8f1fcc4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.71bac2b5.css",
-    "static/js/main.7944b76c.js"
+    "static/js/main.c9ff2a45.js"
   ]
 }
