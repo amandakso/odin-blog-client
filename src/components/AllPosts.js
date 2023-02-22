@@ -42,7 +42,7 @@ const AllPosts = () => {
               _id,
             }) => (
               <li key={_id}>
-                <Link to={`/posts/${_id}`}>
+                <Link to={`/odin-blog-client/posts/${_id}`}>
                   {title} By: {author.username}{" "}
                   {updated
                     ? `Updated: ${updated_formatted}`

@@ -14,9 +14,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/posts" element={<AllPosts />} />
-          <Route path="/posts/:postId" element={<Post />} />
+          <Route path="/odin-blog-client/" element={<Home />} />
+          <Route path="/odin-blog-client/posts" element={<AllPosts />} />
+          <Route path="/odin-blog-client/posts/:postId" element={<Post />} />
         </Routes>
       </BrowserRouter>
     </div>

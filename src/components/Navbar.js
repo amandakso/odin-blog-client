@@ -107,10 +107,10 @@ const Navbar = () => {
       </div>
       <div id="navbarMenuItems" className="navbar-menu">
         <div className="navbar-start">
-          <Link to={"/"} className="navbar-item">
+          <Link to={"/odin-blog-client/"} className="navbar-item">
             Home
           </Link>
-          <Link to={"/posts"} className="navbar-item">
+          <Link to={"/odin-blog-client/posts"} className="navbar-item">
             Posts
           </Link>
         </div>

@@ -7,11 +7,11 @@ const Home = () => {
   const navigate = useNavigate();
 
   const allPostsPage = () => {
-    navigate("/posts");
+    navigate("odin-blog-client/posts");
   };
 
   const postPage = (postId) => {
-    navigate(`/posts/${postId}`);
+    navigate(`/odin-blog-client/posts/${postId}`);
   };
 
   useEffect(() => {
