@@ -5,7 +5,6 @@ import EditCommentModal from "./EditCommentModal";
 
 const Comments = () => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [errors, setErrors] = useState(null);
   const [newComment, setNewComment] = useState("");
@@ -112,8 +111,6 @@ const Comments = () => {
       } catch (err) {
         setError(err.message);
         setData(null);
-      } finally {
-        setLoading(false);
       }
     };
     if (refreshComments) {
