@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import AllPosts from "./components/AllPosts";
 import Post from "./components/Post";
 import Navbar from "./components/Navbar";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/odin-blog-client/" element={<Home />} />
           <Route path="/odin-blog-client/posts" element={<AllPosts />} />
           <Route path="/odin-blog-client/posts/:postId" element={<Post />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
