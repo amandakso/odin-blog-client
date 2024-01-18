@@ -15,6 +15,36 @@ const Home = () => {
   };
 
   useEffect(() => {
+    setInterval(wakeupTimer, 10000);
+  });
+
+  useEffect(() => {
+    const myInterval = setInterval(wakeupTimer, 870000);
+
+    return () => {
+      // should clear the interval when the component unmounts
+      clearInterval(myInterval);
+    };
+  }, []);
+
+  const wakeupTimer = async () => {
+    try {
+      const response = await fetch(`https://odin-blog-api.onrender.com/blog/`, {
+        mode: "cors",
+      });
+      if (!response.ok) {
+        throw new Error(
+          `Unable to reach server.The status is ${response.status}`
+        );
+      } else {
+        console.log("Successful ping to server");
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
     const getPosts = async () => {
       try {
         const response = await fetch(
