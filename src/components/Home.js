@@ -19,7 +19,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const myInterval = setInterval(wakeupTimer, 870000);
+    const myInterval = setInterval(wakeupTimer, 840000);
 
     return () => {
       // should clear the interval when the component unmounts
