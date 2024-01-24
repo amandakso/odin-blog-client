@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const allPostsPage = () => {
-    navigate("odin-blog-client/posts");
+    navigate("/odin-blog-client/posts");
   };
 
   const postPage = (postId) => {
